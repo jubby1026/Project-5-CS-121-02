@@ -34,7 +34,7 @@ int main() {
         int d = correct + 2;
 
         //outputs options 
-        cout << "A) " << a << endl;
+        cout << "\nA) " << a << endl;
         cout << "B) " << b << endl;
         cout << "C) " << c << endl;
         cout << "D) " << d << endl;
