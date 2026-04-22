@@ -1,7 +1,7 @@
 /******************************************************************************
 #Project: Quiz Game
 #Description: Multiple choice, ten question quiz. Standard ABCD answer choices
-#Name: Untonio Evans Jr
+#Name: Untonio Evans Jr, Abbey Myrick, Judson Higginbotham
 Date: 4-16-2026
 *******************************************************************************/
 #include <iostream>
