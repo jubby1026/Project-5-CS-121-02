@@ -31,7 +31,7 @@ int ask_question(string question, string options[], char correct_answer) {
 
 int main() {
     int score = 0;
-    ifstream quiz_file("mathQuiz.txt");
+    ifstream quiz_file("mathQuizupdated.txt");
     string question;
     string choices[4];
     char answer;
