@@ -4,48 +4,48 @@
 #include <fstream>
 using namespace std;
 
-int askQuestion(string question, string options[], char correctAnswer) {
+int ask_question(string question, string options[], char correct_answer) {
     cout << question << endl; // prints out the questions
 
     for (int i = 0; i < 4; i++) {
         cout << options[i] << endl; // prints out all answer options 
     }
 
-    char userAnswer;
+    char user_answer;
     cout << "Your answer: ";
-    cin >> userAnswer;
+    cin >> user_answer;
 
-    if (toupper(userAnswer) == correctAnswer) {  //Ensures all answers are in uppercase to match the file
+    if (toupper(user_answer) == correct_answer) {  //Ensures all answers are in uppercase to match the file
         cout << "Correct!\n\n";
         return 1;
     } else {
-        cout << "Wrong! Correct answer was " << correctAnswer << "\n\n";
+        cout << "Wrong! Correct answer was " << correct_answer << "\n\n";
         return 0;
     }
 }
 
 int main() {
     int score = 0;
-    ifstream quizFile("mathQuizupdated.txt"); // file format includes 10 sets of questions starting with the question, four answer choices, the correct answer, and a space for readability.
+    ifstream quiz_file("mathQuizupdated.txt"); // file format includes 10 sets of questions starting with the question, four answer choices, the correct answer, and a space for readability.
     string question;
     string choices[4];
     char answer;
     
-    while(getline(quizFile, question)){ // reads in the question first
+    while(getline(quiz_file, question)){ // reads in the question first
         for (int i = 0; i < 4; i++){
-            getline(quizFile, choices[i]); // then the four answer choices
+            getline(quiz_file, choices[i]); // then the four answer choices
         }
         
         quizFile >> answer; // and finally the answer
-        quizFile.ignore(); // skips the blank line.
+        quiz_file.ignore(); // skips the blank line.
         
-        score += askQuestion(question, choices, answer); // tracks score throught the quiz starting from 0/10
-        quizFile.ignore();
+        score += ask_question(question, choices, answer); // tracks score throught the quiz starting from 0/10
+        quiz_file.ignore();
     }
 
     cout << "Quiz Finished!\n";
     cout << "Your score: " << score << "/10\n";
-    quizFile.close();
+    quiz_file.close();
     return 0;
 }
 // Our code is now able to read questions from a file which is the biggest upgrade since the last milestone of this project.
