@@ -41,7 +41,7 @@ int main() {
             getline(quiz_file, choices[i]); // then the four answer choices
         }
         
-        quizFile >> answer; // and finally the answer
+        quiz_file >> answer; // and finally the answer
         quiz_file.ignore(); // skips the blank line.
         
         score += ask_question(question, choices, answer); // tracks score throught the quiz starting from 0/10
