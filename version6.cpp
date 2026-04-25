@@ -24,7 +24,7 @@ int ask_question(string question, string options[], char correct_answer) {
         cout << "Correct! one point earned\n\n";
         return 1;
     } else {
-        cout << "Wrong! Correct answer was:" << correct_answer <<"no points earned<< "\n\n";
+        cout << "Wrong! Correct answer was:" << correct_answer <<"no points earned"<< "\n\n";
         return 0;
     }
 }
