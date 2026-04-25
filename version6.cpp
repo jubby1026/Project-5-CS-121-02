@@ -1,6 +1,6 @@
 /******************************************************************************
 #Project: Quiz Game
-#Description: Multiple choice, ten question quiz. Standard ABCD answer choices
+#Description: Multiple choice, ten question general quiz. Standard ABCD answer choices. Reads questions and answers from a file.
 #Name: Untonio Evans Jr, Abigale Myrick, Judson Higginbotham
 Date: 4-16-2026
 *******************************************************************************/
