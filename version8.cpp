@@ -28,15 +28,15 @@ int ask_question(string question, string options[], char correct_answer) {
         char uaUpper = toupper(user_answer);
         
 
-        if (uaUpper == correct_answer) {  //Ensures all answers are in uppercase to match the file
+        if (uaUpper == correct_answer) {  //Ensures all answers are in uppercase to match the file (Made by Untonio)
             cout << "Correct!\n\n";
-            correctBool = 1;
+            correctBool = 1; // Tracks the score
             break;
-        } else if ((uaUpper == 'A' or uaUpper == 'B') or (uaUpper == 'C' or uaUpper == 'D')) {
+        } else if ((uaUpper == 'A' or uaUpper == 'B') or (uaUpper == 'C' or uaUpper == 'D')) { // Additional qurstion logic (Made by Untonio)
             cout << "Wrong! Correct answer was " << correct_answer << "\n\n";
             correctBool = 0;
             break;
-        } else{
+        } else{ // handles invalid inputs (Untonio)
             cout<<"Invalid input. Try again"<<endl;
             continue;
         }
