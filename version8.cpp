@@ -1,0 +1,89 @@
+/******************************************************************************
+#Project: Quiz Game
+#Description: Multiple choice, ten question general quiz. Standard ABCD answer choices. Reads questions and answers from a file.
+#Name: Untonio Evans Jr, Abigale Myrick, Judson Higginbotham
+Date: 5-1-2026
+*******************************************************************************/
+
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <cctype>
+using namespace std;
+
+// This functions holds all of the question logic including printing it to the console, checking if the provided input is correct, and returning a point (Everything besides the while loop is done by Untonio and Abigale).
+int ask_question(string question, string options[], char correct_answer) {
+    cout << question << endl; // prints out the questions
+
+    for (int i = 0; i < 4; i++) {
+        cout << options[i] << endl; // prints out all answer options 
+    }
+    
+    int correctBool;
+    //The while loop is only here to allow multiple attempts after messing up an input (The while loop, breaks, continue, and correctBool variable created by Burke)
+    while (true){
+        char user_answer;
+        cout << "Your answer: ";
+        cin >> user_answer;
+        char uaUpper = toupper(user_answer);
+        
+
+        if (uaUpper == correct_answer) {  //Ensures all answers are in uppercase to match the file
+            cout << "Correct!\n\n";
+            correctBool = 1;
+            break;
+        } else if ((uaUpper == 'A' or uaUpper == 'B') or (uaUpper == 'C' or uaUpper == 'D')) {
+            cout << "Wrong! Correct answer was " << correct_answer << "\n\n";
+            correctBool = 0;
+            break;
+        } else{
+            cout<<"Invalid input. Try again"<<endl;
+            continue;
+        }
+        
+    }
+    return correctBool;
+}
+
+// Handles most of the general logic that would be printed to the console. It was put here for better modular design (While loop section created by Judson, everything else is made by Untonio and Abigale.).
+void outputManager(ifstream& quiz_file, string question,string choices[4],char answer){
+    int score = 0;
+    while(getline(quiz_file, question)){ // reads in the question first
+        for (int i = 0; i < 4; i++){
+            getline(quiz_file, choices[i]); // then the four answer choices
+        }
+        
+        quiz_file >> answer; // and finally the answer
+        quiz_file.ignore(); // skips the blank line.
+        
+        score += ask_question(question, choices, answer); // tracks score throught the quiz starting from 0/10
+        quiz_file.ignore();
+    }
+
+    cout << "Quiz Finished!\n";
+    cout << "Your score: " << score << "/10\n";
+    quiz_file.close();
+}
+
+// Reads the file and puts specific lines into specific variables to be used inside the outputManager function (Made by Judson)
+void fileRead(string file){
+    ifstream quiz_file(file); // file format includes 10 sets of questions starting with the question, four answer choices, the correct answer, and a space for readability.
+    if (!quiz_file){
+        cout<<"Invalid File Input"<<endl;
+        return;
+    }
+    string question;
+    string choices[4];
+    char answer;
+    outputManager(quiz_file, question, choices, answer);
+}
+
+int main() {
+    // Allows for any file to be easily inputted into the program, increasing modularity.
+    string fileInput;
+    cout<<"Enter file name: "<<endl;
+    cin>>fileInput;
+    fileRead(fileInput);
+    return 0;
+}
+// Our code is now able to read questions from a file which is the biggest upgrade since the last milestone of this project.
