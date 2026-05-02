@@ -65,9 +65,9 @@ void outputManager(ifstream& quiz_file, string question,string choices[4],char a
     quiz_file.close();
 }
 
-// Reads the file and puts specific lines into specific variables to be used inside the outputManager function (Made by Judson)
+// Reads the file and puts specific lines into specific variables to be used inside the outputManager function (Made by Judson debugged by Abigale )
 void fileRead(string file){
-    ifstream quiz_file(file); // file format includes 10 sets of questions starting with the question, four answer choices, the correct answer, and a space for readability.
+    ifstream quiz_file(file); // file format includes 10 sets of questions starting with the question, four answer choices, the correct answer, and a space for readability.(file ,made and formatteed by Abigale)
     if (!quiz_file){
         cout<<"Invalid File Input"<<endl;
         return;
