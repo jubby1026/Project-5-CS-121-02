@@ -20,13 +20,14 @@ int ask_question(string question, string options[], char correct_answer) {
     }
     
     int correctBool;
+    int tries = 3;
     //The while loop is only here to allow multiple attempts after messing up an input (The while loop, breaks, continue, and correctBool variable created by Burke)
     while (true){
         char user_answer;
         cout << "Enter your answer: ";
         cin >> user_answer;
         char uaUpper = toupper(user_answer);
-        int tries = 3;
+        
         
 
         if (uaUpper == correct_answer) {  //Ensures all answers are in uppercase to match the file (Made by Untonio)
@@ -34,9 +35,10 @@ int ask_question(string question, string options[], char correct_answer) {
             correctBool = 1; // Tracks the score
             break;
         } else if ((uaUpper == 'A' or uaUpper == 'B') or (uaUpper == 'C' or uaUpper == 'D')) { // Additional qurstion logic (Made by Untonio)
-            cout << "Wrong! Try again. \nTries remaining: "<<tries<<".\n\n";
             tries -= 1;
-            if (tries >= 0){
+            cout << "Wrong! Try again. \nTries remaining: "<<tries<<".\n\n";
+            
+            if (tries <= 0){
                 correctBool = 0;
                 cout << "Wrong! Correct answer was " << correct_answer << "\n\n";
                 break;
@@ -90,7 +92,7 @@ int main() {
     string fileInput;
     int highScore = 0;
     do {
-    cout<<"Menu: \n Press 1 to enter file name. \n Press 0 to exit the program. \n Input here: "<<endl;
+    cout<<"Menu: \n Press 1 to enter file name. \n Press 0 to exit the program. \n Input here: ";
     cin>>fileInput;
     if (fileInput == "1") {
         cout<<"Enter file name: "<<endl;
